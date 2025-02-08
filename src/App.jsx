@@ -1,6 +1,5 @@
 import 'bootstrap/dist/js/bootstrap.js';
-import 'bootswatch/dist/solar/bootstrap.min.css';
-import { useState } from 'react';
+import 'bootswatch/dist/vapor/bootstrap.min.css';
 import Header from './components/Header';
 import MoviePortal from './components/MoviePortal';
 

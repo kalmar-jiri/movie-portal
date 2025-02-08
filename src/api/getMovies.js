@@ -3,8 +3,8 @@ import axios from 'axios';
 const url = 'http://www.omdbapi.com/?apikey=ec325445&';
 
 export default function getMovies(searchInput, setMovies, setError) {
-  console.log(searchInput);
-  console.log(typeof searchInput);
+  // console.log(searchInput);
+  // console.log(typeof searchInput);
 
   const req = axios.get(`${url}s=${searchInput}`);
   return req.then(res => {

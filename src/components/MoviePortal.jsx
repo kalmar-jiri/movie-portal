@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import getMovies from '../api/getMovies';
+import ErrorAlert from './ErrorAlert';
+import MovieField from './MovieField';
 
 export default function MoviePortal() {
   const [searchInput, setSearchInput] = useState('');
@@ -13,8 +15,7 @@ export default function MoviePortal() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    getMovies(searchInput, setMovies, setError).then(() => console.log(movies));
-    setEnteredSearch(searchInput);
+    getMovies(searchInput, setMovies, setError).then(() => setEnteredSearch(searchInput));
   };
 
   return (
@@ -22,10 +23,17 @@ export default function MoviePortal() {
       <div className="col-md-12">
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Search movie..." className="form-control" value={searchInput} onChange={handleSearchChange} />
-          <p>{enteredSearch}</p>
         </form>
-        <p>{JSON.stringify(movies)}</p>
-        <p>{error}</p>
+        <br />
+        {error && <ErrorAlert error={error} enteredSearch={enteredSearch} />}
+        {movies.length > 0 && (
+          <p>
+            Showing {movies.length} movies for &apos;{enteredSearch}&apos;
+          </p>
+        )}
+        {movies.map(movie => (
+          <MovieField key={movie.imdbID} movie={movie} />
+        ))}
       </div>
     </div>
   );
