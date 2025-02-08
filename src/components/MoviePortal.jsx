@@ -5,7 +5,7 @@ export default function MoviePortal() {
   const [searchInput, setSearchInput] = useState('');
   const [enteredSearch, setEnteredSearch] = useState('');
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState(null);
 
   const handleSearchChange = e => {
     setSearchInput(e.target.value);
@@ -13,7 +13,7 @@ export default function MoviePortal() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    getMovies(searchInput, setMovies, setError).then(res => console.log(movies));
+    getMovies(searchInput, setMovies, setError).then(() => console.log(movies));
     setEnteredSearch(searchInput);
   };
 
@@ -22,9 +22,10 @@ export default function MoviePortal() {
       <div className="col-md-12">
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Search movie..." className="form-control" value={searchInput} onChange={handleSearchChange} />
-          {searchInput}
           <p>{enteredSearch}</p>
         </form>
+        <p>{JSON.stringify(movies)}</p>
+        <p>{error}</p>
       </div>
     </div>
   );
