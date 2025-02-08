@@ -2,9 +2,9 @@
 export default function MovieField({ movie }) {
   return (
     <>
-      <div className="row">
+      <div className="row mt-3">
         <div className="col-md-2">
-          <img src={movie.Poster} alt={movie.Title} width="100%" />
+          <img src={movie.Poster === 'N/A' ? '/poster.png' : movie.Poster} alt={movie.Title} width="100%" />
         </div>
         <div className="col-md-10">
           <div className="card">

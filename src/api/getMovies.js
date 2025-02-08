@@ -14,7 +14,7 @@ export default function getMovies(searchInput, setMovies, setError) {
       const movieDetailsPromises = res.data.Search.map(movie => getMovieDetails(movie.imdbID, setError));
       Promise.all(movieDetailsPromises).then(movieDetails => {
         // console.log('movieDetails');
-        // console.log(movieDetails);
+        console.log(movieDetails);
         setMovies(movieDetails);
         setError(null);
       });

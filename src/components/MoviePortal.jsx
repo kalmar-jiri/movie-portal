@@ -19,8 +19,8 @@ export default function MoviePortal() {
   };
 
   return (
-    <div className="row">
-      <div className="col-md-12">
+    <div className="row d-flex align-items-center justify-content-center mt-4">
+      <div className="col-md-8">
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Search movie..." className="form-control" value={searchInput} onChange={handleSearchChange} />
         </form>
